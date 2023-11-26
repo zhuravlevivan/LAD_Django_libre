@@ -5,7 +5,8 @@
 <ul>
         {% for book in books %}
             <li>
-                <p>{{ book.author}} {{ book.title }}</p>
+                <h4>{{ book.author}} {{ book.title }}</h4>
+                <p>{{ book.content|truncatewords:20}}</p>
                 <p><a href="{% url 'book' book.id %}">Read book</a></p>
                 {% if not forloop.last %}
                 <hr>
