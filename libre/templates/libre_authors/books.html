@@ -1,0 +1,17 @@
+{% extends 'libre_authors/base.html' %}
+{% block title %}LAD LIBRARY{% endblock title %}
+{% block header %}BOOKS{% endblock header %}
+{% block content %}
+<ul>
+        {% for book in books %}
+            <li>
+                <p>{{ book.author}} {{ book.title }}</p>
+                <p><a href="{% url 'book' book.id %}">Read book</a></p>
+                {% if not forloop.last %}
+                <hr>
+                {% endif %}
+            </li>
+
+        {% endfor %}
+</ul>
+{% endblock content %}
