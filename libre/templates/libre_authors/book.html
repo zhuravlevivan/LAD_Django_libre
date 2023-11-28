@@ -1,0 +1,12 @@
+{% extends 'libre_authors/base.html' %}
+{% block content %}
+
+    <h1>{{ book.title }}</h1>
+
+    {% if book.photo %}
+        <p><img src="{{ book.photo.url }}"></p>
+    {% endif %}
+
+    {{ book.content|linebreaks }}
+
+{% endblock %}

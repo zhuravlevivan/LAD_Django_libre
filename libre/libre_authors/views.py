@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template.response import TemplateResponse
+
+from .models import LibreAuthors
 
 menu = [
 	{'title': 'Books', 'url_name': 'books'},
@@ -38,6 +40,7 @@ book_db = [
 
 
 def index(request):
+	# books_db = LibreAuthors.objects.all()
 	data = {'menu': menu, 'books': book_db, }
 	return render(request, "libre_authors/index.html", context=data)
 
@@ -50,6 +53,7 @@ def authors(request, book_authors='Not Set'):  # http://127.0.0.1:8000/authors/?
 
 
 def books(request):
+	books_db = LibreAuthors.objects.filter(is_published=1)
 	data = {'menu': menu, 'books': book_db, }
 	return render(request, "libre_authors/books.html", context=data)
 
@@ -58,11 +62,21 @@ def books(request):
 
 
 def show_book(request, book_id):
-	return HttpResponse(f'Show Book with ID = {book_id}')
+	book = get_object_or_404(LibreAuthors, pk=book_id)
+
+	data = {
+		'title': book.title,
+		'menu': menu,
+		'book': book,
+
+	}
+
+	# return HttpResponse(f'Show Book with ID = {book_slug}')
+	return render(request, 'libre_authors/book.html', data)
 
 
 def about(request):
-	data = {'menu': menu, 'books': book_db, }
+	data = {'menu': menu, }
 	return TemplateResponse(request, 'libre_authors/about.html', context=data)
 
 
