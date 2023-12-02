@@ -12,9 +12,8 @@ menu = [
     {'title': 'Sign In', 'url_name': 'sign'},
 ]
 
+
 def index(request):
-    # books_db = LibreAuthors.objects.filter(is_published=1)
-    # data = {'menu': menu, 'books': books_db, }
     data = {'menu': menu, }
     return render(request, "libre_authors/index.html", context=data)
 
@@ -32,19 +31,6 @@ def books(request):
     return render(request, "libre_authors/books.html", context=data)
 
 
-# return TemplateResponse(request, 'libre_authors/books.html')
-
-
-# def show_book(request, book_id):
-# 	book = get_object_or_404(LibreAuthors, pk=book_id)
-#
-# 	data = {
-# 		'title': book.title,
-# 		'menu': menu,
-# 		'book': book,
-#
-# 	}
-# 	return render(request, 'libre_authors/book.html', data)
 def show_book(request, book_slug):
     book = get_object_or_404(LibreAuthors, slug=book_slug)
     data = {
