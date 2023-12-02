@@ -24,3 +24,6 @@ urlpatterns = [
 ]
 
 handler404 = page_not_found
+admin.site.site_header = 'ADMIN PANEL'
+admin.site.index_title = 'LIBRARY'
+
