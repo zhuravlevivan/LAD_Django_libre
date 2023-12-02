@@ -54,7 +54,7 @@ def authors(request, book_authors='Not Set'):  # http://127.0.0.1:8000/authors/?
 
 
 def books(request):
-	books_db = LibreAuthors.objects.filter(is_published=1)
+	books_db = LibreAuthors.published.all()
 	data = {'menu': menu, 'books': books_db, }
 	return render(request, "libre_authors/books.html", context=data)
 
