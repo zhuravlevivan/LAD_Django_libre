@@ -40,8 +40,9 @@ book_db = [
 
 
 def index(request):
-	# books_db = LibreAuthors.objects.all()
-	data = {'menu': menu, 'books': book_db, }
+	# books_db = LibreAuthors.objects.filter(is_published=1)
+	# data = {'menu': menu, 'books': books_db, }
+	data = {'menu': menu, }
 	return render(request, "libre_authors/index.html", context=data)
 
 
@@ -54,25 +55,32 @@ def authors(request, book_authors='Not Set'):  # http://127.0.0.1:8000/authors/?
 
 def books(request):
 	books_db = LibreAuthors.objects.filter(is_published=1)
-	data = {'menu': menu, 'books': book_db, }
+	data = {'menu': menu, 'books': books_db, }
 	return render(request, "libre_authors/books.html", context=data)
 
 
 # return TemplateResponse(request, 'libre_authors/books.html')
 
 
-def show_book(request, book_id):
-	book = get_object_or_404(LibreAuthors, pk=book_id)
-
+# def show_book(request, book_id):
+# 	book = get_object_or_404(LibreAuthors, pk=book_id)
+#
+# 	data = {
+# 		'title': book.title,
+# 		'menu': menu,
+# 		'book': book,
+#
+# 	}
+# 	return render(request, 'libre_authors/book.html', data)
+def show_book(request, book_slug):
+	book = get_object_or_404(LibreAuthors, slug=book_slug)
 	data = {
-		'title': book.title,
-		'menu': menu,
-		'book': book,
+			'title': book.title,
+			'menu': menu,
+			'book': book,
 
-	}
-
-	# return HttpResponse(f'Show Book with ID = {book_slug}')
-	return render(request, 'libre_authors/book.html', data)
+		}
+	return render(request,  'libre_authors/book.html', data)
 
 
 def about(request):
