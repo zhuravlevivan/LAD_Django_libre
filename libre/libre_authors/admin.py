@@ -3,8 +3,6 @@ from django.contrib import admin, messages
 from .models import LibreAuthors
 
 
-# admin.site.register(LibreAuthors)
-
 @admin.register(LibreAuthors)
 class LibreAuthorsAdmin(admin.ModelAdmin):
     actions = ['set_published', 'set_draft']

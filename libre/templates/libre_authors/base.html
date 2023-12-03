@@ -3,21 +3,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link  rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/left-nav-style.css' %}"/>
     <title>{% block title %} Заголовок {% endblock title %}</title>
-    <link type="text/css" href="{% static 'css/style.css' %}" rel='stylesheet'/>
+
 </head>
-<ul>
-    <li><a href="{% url 'home' %}">Главная</a></li>
-    {% for m in menu %}
-        {% if not forloop.last %}
-            <li>{% else %}
-            <li class="last">{% endif %}
-    <a href="{% url m.url_name %}">{{ m.title }}</a>
-    </li>
-    {% endfor %}
-</ul>
 <body>
+
 <h1>{% block header %}{% endblock header %}</h1>
+<input type="checkbox" id="nav-toggle" hidden>
+<nav class="nav">
+    <label for="nav-toggle" class="nav-toggle" onclick></label>
+    <ul>
+        <li><a href="{% url 'home' %}">Главная</a></li>
+        {% for m in menu %}
+            {% if not forloop.last %}
+                <li>{% else %}
+                <li class="last">{% endif %}
+        <a href="{% url m.url_name %}">{{ m.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
 <h1>{% block content %}{% endblock content %}</h1>
 
 <div>Подвал Страницы</div>

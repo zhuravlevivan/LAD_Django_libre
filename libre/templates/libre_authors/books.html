@@ -5,10 +5,11 @@
     <ul>
         {% for book in books %}
             <li>
-                <h4>{{ book.author }} {{ b.title }}</h4>
-                <p>{{ book.content|truncatewords:20 }}</p>
+{#                <ul><a href="{{ book.get_absolute_url }}">Read book</a> {{ book.author }} - {{ book.title }}</ul>#}
+                <ul>{{ book.author }} - <a href="{{ book.get_absolute_url }}">{{ book.title }}</a></ul>
+{#                <p>{{ book.content|truncatewords:20 }}</p>#}
                 {#                <p><a href="{% url 'book' book.id %}">Read book</a></p>#}
-                <p><a href="{{ book.get_absolute_url }}">Read book</a></p>
+{#                <p><a href="{{ book.get_absolute_url }}">Read book</a></p>#}
                 {% if not forloop.last %}
                     <hr>
                 {% endif %}

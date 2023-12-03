@@ -7,8 +7,8 @@ from .models import LibreAuthors
 menu = [
     {'title': 'Books', 'url_name': 'books'},
     {'title': 'About', 'url_name': 'about'},
-    {'title': 'Add Note', 'url_name': 'add_note'},
-    {'title': 'Help', 'url_name': 'help'},
+    # {'title': 'Add Note', 'url_name': 'add_note'},
+    # {'title': 'Help', 'url_name': 'help'},
     {'title': 'Sign In', 'url_name': 'sign'},
 ]
 
@@ -56,7 +56,8 @@ def help_page(request):
 
 
 def sign_in(request):
-    return HttpResponse('Sign in page')
+    data = {'menu': menu, }
+    return TemplateResponse(request, 'libre_authors/signin.html', context=data)
 
 
 def page_not_found(request, exception):
