@@ -9,7 +9,7 @@ menu = [
     {'title': 'About', 'url_name': 'about'},
     # {'title': 'Add Note', 'url_name': 'add_note'},
     # {'title': 'Help', 'url_name': 'help'},
-    {'title': 'Sign In', 'url_name': 'sign'},
+    {'title': 'Log In', 'url_name': 'login'},
 ]
 
 
@@ -55,9 +55,9 @@ def help_page(request):
     return HttpResponse('Help page')
 
 
-def sign_in(request):
+def login_user(request):
     data = {'menu': menu, }
-    return TemplateResponse(request, 'libre_authors/signin.html', context=data)
+    return TemplateResponse(request, 'libre_authors/login.html', context=data)
 
 
 def page_not_found(request, exception):

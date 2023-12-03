@@ -11,6 +11,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),  # default
     path('add_note/', views.add_note, name='add_note'),  # default
     path('help/', views.help_page, name='help'),  # default
-    path('sign/', views.sign_in, name='sign'),  # default
+    path('login/', views.login_user, name='login'),  # default
 
 ]

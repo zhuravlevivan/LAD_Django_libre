@@ -20,7 +20,8 @@ from libre_authors.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('libre_authors.urls'))
+    path('', include('libre_authors.urls')),
+    path('users/', include('users.urls', namespace='users'))
 ]
 
 handler404 = page_not_found

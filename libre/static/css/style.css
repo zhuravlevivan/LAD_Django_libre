@@ -127,6 +127,10 @@ ul {
     text-align: left;
 }
 
+li {
+    line-height:16px;
+}
+
 .btn {
     -webkit-border-radius: 10em;
     -moz-border-radius: 10em;

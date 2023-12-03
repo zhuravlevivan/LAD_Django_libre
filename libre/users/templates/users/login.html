@@ -1,0 +1,14 @@
+{% extends 'libre_authors/base.html' %}
+{% block title %}LAD LIBRARY{% endblock title %}
+{% block header %}LOG IN{% endblock header %}
+{% block content %}
+
+    <h1>Authorisation</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><button type="submit">Sign In</button></p>
+        </form>
+
+{% endblock content %}
