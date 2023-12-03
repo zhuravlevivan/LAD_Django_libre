@@ -24,6 +24,9 @@
         {% endfor %}
         {% if user.is_authenticated %}
             <li>{{ user.username  }}<a href="{% url 'users:logout' %}">Log Out</a></li>
+            {% if user.is_superuser %}
+            <li><a href="{% url 'admin:index' %}">Admin Panel</a></li>
+            {% endif %}
         {% else %}
         <li><a href="{% url 'users:login' %}">Log In</a><a href="#">Sign Up</a></li>
         {% endif %}
