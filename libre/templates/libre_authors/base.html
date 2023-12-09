@@ -28,7 +28,7 @@
             <li><a href="{% url 'admin:index' %}">Admin Panel</a></li>
             {% endif %}
         {% else %}
-        <li><a href="{% url 'users:login' %}">Log In</a><a href="#">Sign Up</a></li>
+        <li><a href="{% url 'users:login' %}">Log In</a><a href="{% url 'users:register' %}">Register</a></li>
         {% endif %}
     </ul>
 </nav>

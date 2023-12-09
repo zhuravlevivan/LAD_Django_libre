@@ -1,0 +1,14 @@
+{% extends 'libre_authors/base.html' %}
+
+{% block content %}
+
+    <h1>REGISTRATION</h1>
+
+        <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}"/>
+        {{ form.as_p }}
+        <p><button type="submit">Registration</button></p>
+        </form>
+
+{% endblock %}

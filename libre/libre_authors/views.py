@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template.response import TemplateResponse
@@ -10,6 +11,7 @@ menu = [
     # {'title': 'Add Note', 'url_name': 'add_note'},
     # {'title': 'Help', 'url_name': 'help'},
     {'title': 'Log In', 'url_name': 'login'},
+    # {'title': 'Register', 'url_name': 'register'}
 ]
 
 
@@ -42,6 +44,7 @@ def show_book(request, book_slug):
     return render(request, 'libre_authors/book.html', data)
 
 
+@login_required
 def about(request):
     data = {'menu': menu, }
     return TemplateResponse(request, 'libre_authors/about.html', context=data)
