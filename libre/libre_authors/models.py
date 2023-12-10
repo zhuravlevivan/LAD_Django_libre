@@ -12,6 +12,10 @@ class LibreAuthors(models.Model):
         DRAFT = 0, 'DRAFT'
         PUBLISHED = 1, 'PUBLISHED'
 
+    # class Status(models.TextChoices):
+    #     DRAFT = 'DF', 'DRAFT'
+    #     PUBLISHED = "PB", 'PUBLISHED'
+
     title = models.CharField(max_length=255, verbose_name='BOOK TITLE')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='SLUG')
     author = models.CharField(max_length=255)
@@ -21,6 +25,8 @@ class LibreAuthors(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
                                        default=Status.DRAFT, verbose_name='STATUS')
+    # is_published = models.CharField(choices=Status.choices, max_length=2,
+    #                                 default=Status.DRAFT, verbose_name='STATUS')
 
     objects = models.Manager()
     published = PublishedManager()
