@@ -13,6 +13,4 @@ urlpatterns = [
     path('help/', views.help_page, name='help'),  # default
     path('login/', views.login_user, name='login'),  # default
 
-
-
 ]
