@@ -7,6 +7,8 @@
         <p><img src="{{ book.photo.url }}"></p>
     {% endif %}
 
-    {{ book.content|linebreaks }}
+{#    {{ book.content|linebreaks }}#}
+    {{ book.content|safe }}
+
 
 {% endblock %}
